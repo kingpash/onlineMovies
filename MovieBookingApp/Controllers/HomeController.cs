@@ -10,10 +10,6 @@ using MovieBookingApp.Data;
 using MovieBookingApp.Models;
 namespace MovieBookingApp.Controllers
 {
-
-    
-
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -34,8 +30,6 @@ namespace MovieBookingApp.Controllers
             var getMovieList = _context.MovieDetails.ToList();
             return View(getMovieList);
         }
-
-   
 
         public IActionResult Privacy()
         {

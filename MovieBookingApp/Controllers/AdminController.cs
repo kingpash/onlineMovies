@@ -15,7 +15,7 @@ namespace MovieBookingApp.Controllers
     {
         private ApplicationDbContext _context;
         private UploadInterface _upload;
-
+ 
         public AdminController(ApplicationDbContext context, UploadInterface upload)
         {
             _context = context;
@@ -45,12 +45,10 @@ namespace MovieBookingApp.Controllers
             movie.Movie_Name = vmodel.Name;
             movie.Movie_Description = vmodel.Description;
             movie.DateAndTime = vmodel.DateofMovie;
-            foreach (var item in files) {
+            foreach (var item in files)
+            {
                 movie.MoviePicture = "~/uploads/" + item.FileName.Trim();
-            
-      
             }
-
 
             _upload.uploadfilemultiple(files);
             _context.MovieDetails.Add(movie);
