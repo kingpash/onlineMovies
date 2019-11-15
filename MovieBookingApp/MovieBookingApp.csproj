@@ -18,7 +18,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\FileUploadControl\FileUploadControl.csproj" />
+    <Reference Include="FileUploadControl">
+      <HintPath>..\FileUploadControl\obj\Debug\netcoreapp3.0\FileUploadControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
-
 </Project>
