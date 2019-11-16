@@ -16,9 +16,6 @@ namespace FileUploadControl
         public uploadfilerepo(IHostingEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
-
-
-
         }
         public async void uploadfilemultiple(IList<IFormFile> files)
         {
@@ -27,11 +24,10 @@ namespace FileUploadControl
             {
 
                 string filename = item.FileName.Trim('"');
+                filename = this.EnsureFileName(filename);
                 byte[] buffer = new byte[16 * 1024];
                 using (FileStream output = System.IO.File.Create(this.GetpathAndFileName(filename)))
                 {
-
-
                     using (Stream input = item.OpenReadStream())
                     {
 
@@ -39,20 +35,20 @@ namespace FileUploadControl
                         int readBytes;
                         while ((readBytes = input.Read(buffer, 0, buffer.Length)) > 0)
                         {
-
                             await output.WriteAsync(buffer, 0, readBytes);
                             totalByes += readBytes;
-
-
-
                         }
-
-
-
                     }
-
                 }
+            }
+        }
 
+        private string EnsureFileName(string filename)
+        {
+            if(filename.Contains("\\"))
+            {
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
+                return filename;   
             }
         }
 
