@@ -7,14 +7,14 @@ namespace MovieBookingApp.Models
 {
     public class MovieDetails
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Movie_Name { get; set; }
         public string Movie_Description { get; set; }
         public DateTime DateAndTime { get; set; }
 
         public string MoviePicture { get; set; }
 
-        public virtual ICollection<BookingTable> boooking { get; set; }
+        public virtual ICollection<BookingTable> Booking { get; set; }
 
 
     }

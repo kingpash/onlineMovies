@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 
-
-
 namespace MovieBookingApp.Models.viewModels
 {
     public class MovieDetailViewmodel 
