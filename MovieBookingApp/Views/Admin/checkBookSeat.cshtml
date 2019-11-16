@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MovieBookingApp.Models.BookingTable>
 
 @{
-    ViewData["Title"] = "checkBookSeat";
+    ViewData["Title"] = "CheckBookSeat";
 }
 
 <h1>checkBookSeat</h1>
@@ -46,7 +46,7 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.moviedetails.id)
+                @Html.DisplayFor(modelItem => item.moviedetails.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
