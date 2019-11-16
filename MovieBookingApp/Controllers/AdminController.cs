@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FileUploadControl;
@@ -40,14 +41,13 @@ namespace MovieBookingApp.Controllers
         [HttpPost]
         public IActionResult Create(List<IFormFile> files,MovieDetailViewmodel vmodel, MovieDetails movie)
         {
-
-
             movie.Movie_Name = vmodel.Name;
             movie.Movie_Description = vmodel.Description;
             movie.DateAndTime = vmodel.DateofMovie;
             foreach (var item in files)
             {
-                movie.MoviePicture = "~/uploads/" + item.FileName.Trim();
+                string path = Path.GetFileName(item.FileName.Trim());
+                movie.MoviePicture = "~/uploads/" + path;
             }
 
             _upload.uploadfilemultiple(files);
@@ -60,7 +60,7 @@ namespace MovieBookingApp.Controllers
 
         [HttpGet]
 
-        public IActionResult checkBookSeat() {
+        public IActionResult CheckBookSeat() {
 
             var getBookingTable = _context.BookingTable.ToList().OrderByDescending(a => a.Datetopresent);
 
